@@ -131,7 +131,7 @@ function g_query(from, to, query) {
       //console.log(await data.json());
       data1 = ((await data.json())); 
       //console.log( data1.data.plan.itineraries.length);
-      document.getElementById('output2').innerHTML = "Calculating";
+      //document.getElementById('output2').innerHTML = "Calculating";
 
       const set = new Set([]);
       let co2cal = Array.from(set);
