@@ -3,7 +3,7 @@ console.log("Hello, Mani");
 //let output1 = document.getElementById('output1');
 //let output2 = document.getElementById('output1');
 let co2values = [{agency:"HSL",mode:"",avg:"",pavg:""},{agency:"VR",mode:"",avg:"",pavg:""}]
-console.log(co2values[1]);
+//console.log(co2values[1]);
 let fplace = document.getElementById("fplace");
 let tplace = document.getElementById("tplace");
 let btn = document.getElementById("btn");
@@ -131,7 +131,8 @@ function g_query(from, to, query) {
       //console.log(await data.json());
       data1 = ((await data.json())); 
       //console.log( data1.data.plan.itineraries.length);
-  
+      document.getElementById('output2').innerHTML = "Calculating";
+
       const set = new Set([]);
       let co2cal = Array.from(set);
       for(let i = 0; i < data1.data.plan.itineraries.length; i++){
@@ -191,8 +192,7 @@ function g_query(from, to, query) {
 
       document.getElementById('container').innerHTML = generatedHtml;
       //document.getElementById('output1').innerHTML = data1.data.plan.itineraries.length;
-      //document.getElementById('output2').innerHTML = data1.data.plan.itineraries['0'].legs.length;
-
+      
       //alert(data1);
 
   });
