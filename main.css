@@ -1,0 +1,24 @@
+body {
+    width: 100%;
+    float: left;
+  }
+  
+  .class1,
+  .class2,
+  .class3 {
+    width: 33.33333333%;
+    float: left;
+    height: 500px; 
+  }
+  
+  p {
+    padding-top: 25px;
+    text-align: center;
+  }
+  .grocery_item{
+    padding: 5px;
+  }
+  .grocery_item:not(:last-child){
+    border-bottom: 1px solid #ccc;
+  }
+  

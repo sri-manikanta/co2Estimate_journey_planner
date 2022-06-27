@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="main.css">
+
+  <title>Mani_Learn_JS</title>
+</head>
+
+<body>
+    
+    <div class="class1" style="background-color:#c4d6e2;">
+      <label for="fname">From:</label><br>
+      <!--
+      <input type="text" id="fplace" name="from_place" value="Helsinki"><br>
+      -->
+      <select name="from_place" id="fplace">
+        <option value="Helsinki, MATKA::60.171294,24.94165">Helsinki</option>
+        <option value="TAMPERE, MATKA::61.498776,23.773019">Tampere</option>
+        <option value="Turku, MATKA::60.511267,22.273839">Turku</option>
+        <option value="Rovaniemi, MATKA::66.557668,25.828254">Rovaniemi</option>
+        <option value="Jyväskylä, MATKA::62.403396,25.681036">Jyväskylä</option>
+        <option value="Oulu, MATKA::64.928856,25.372801">Oulu</option>
+      </select><br><br>
+      <label for="lname">To:</label><br>
+      <!--
+      <input type="text" id="tplace" name="to_place" value="Tampere"><br><br>
+      -->
+      <select name="to_place" id="tplace">
+        <option value="Oulu, MATKA::64.928856,25.372801">Oulu</option>
+        <option value="Jyväskylä, MATKA::62.403396,25.681036">Jyväskylä</option>
+        <option value="Rovaniemi, MATKA::66.557668,25.828254">Rovaniemi</option>
+        <option value="Turku, MATKA::60.511267,22.273839">Turku</option>
+        <option value="TAMPERE, MATKA::61.498776,23.773019">Tampere</option>
+        <option value="Helsinki, MATKA::60.171294,24.94165">Helsinki</option>
+      </select><br><br>
+      <button id="btn">Plan</button><br><br>
+      <form action="https://forms.gle/TwYZxiPLrv9CYYpF9">
+      <br><input type="submit" name="survey" value="survey">
+      </form>
+    </div>
+    <div class="class2" style="background-color:#d2e1f4;">
+      <div id="output1">
+        loading
+      </div>
+      <div id="output2">
+        loading
+      </div>
+      <div id="container"></div>
+    </div>
+    <div class="class3" style="background-color:#d7ebf4;">
+      <p>This is Working!</p>
+    </div>
+  <script src="./main.js"></script>
+
+</body>
+</html>
