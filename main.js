@@ -1,7 +1,3 @@
-console.log("Hello, Mani");
-//alert("Hi I am learning JS");
-//let output1 = document.getElementById('output1');
-//let output2 = document.getElementById('output1');
 let co2values = [{agency:"HSL",mode:"",avg:"",pavg:""},{agency:"VR",mode:"",avg:"",pavg:""}]
 //console.log(co2values[1]);
 let fplace = document.getElementById("fplace");
@@ -16,44 +12,6 @@ btn.addEventListener('click', event => {
   //g_query(from_value,to_value, query2);
 });
 
-
-
-/* const reader = new FileReader();
-reader.onload = function (event) {
-  console.log(event.target.result); // the CSV content as string
-};
-reader.readAsText("./finland_co2.csv");
-
-reader.onload = function (e) {
-  const text = e.target.result;
-  const data = csv_To_Array(text);
-  console.log(data);
-};*/
-
-//import { writeFileSync } from "fs";
-//import csv from "csvtojson";
-//import { Parser } from "json2csv";
-
-/*(async () => {
-
-    // Load the cars
-    const datavalues = await csv().fromFile("finland_co2.csv");
-
-    // Show the cars
-    console.log(datavalues);
-
-    const data = csv_To_Array(datavalues);
-    console.log(data);
-
-    // Modify the cars
-    //cars[0].Year = 1998;
-
-    // Saved the cars
-    //const carsInCsv = new Parser({ fields: ["Year", "Make", "Model", "Length"] }).parse(cars);
-    //writeFileSync("cars.csv", carsInCsv);
-
-})();
-*/
 let data1 = {};
 let query1 = `query getData($from: String!, $to: String!){
   plan(
@@ -197,7 +155,7 @@ function g_query(from, to, query) {
 
   });
 }
-//g_query();
+
 function timeConverter(UNIX_timestamp){
   var a = new Date(UNIX_timestamp * 1000);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -211,54 +169,6 @@ function timeConverter(UNIX_timestamp){
   return time;
 }
 
-function flatten1 (obj, prefix, current) {
-  prefix = prefix || []
-  current = current || {}
-  console.log(typeof(obj));
-  // Remember kids, null is also an object!
-  if (typeof (obj) === 'object' && obj !== null) {
-    Object.keys(obj).forEach(key => {
-      this.flatten(obj[key], prefix.concat(key), current)
-    })
-  } else {
-    current[prefix.join('.')] = obj
-    console.log(current);
-  }
-
-  return current
-}
-
-function flatten(data) {
-  var result = {};
-  function recurse (cur, prop) {
-      if (Object(cur) !== cur) {
-          result[prop] = cur;
-          console.log(result);
-      } else if (Array.isArray(cur)) {
-           for(var i=0, l=cur.length; i<l; i++){
-               recurse(cur[i], prop + "[" + i + "]");
-               console.log("Lalitha");
-           }
-          if (l == 0){
-              result[prop] = [];
-              //console.log(result);
-          }
-      } else {
-          var isEmpty = true;
-          for (var p in cur) {
-              isEmpty = false;
-              recurse(cur[p], prop ? prop+"."+p : p);
-              console.log("Mani");
-          }
-          if (isEmpty && prop){
-              result[prop] = {};
-              //console.log(result);
-          }
-      }
-  }
-  recurse(data, "");
-  return result;
-}
 
 function csv_To_Array(str, delimiter = ",") {
   const header_cols = str.slice(0, str.indexOf("\n")).split(delimiter);
@@ -275,24 +185,5 @@ function csv_To_Array(str, delimiter = ",") {
   // return the array
   return arr;
 }
-
-/*let grocery_list = {
-  "Banana": { category: "produce", price: 5.99 },
-  "Chocolate": { category: "candy", price: 2.75 },
-  "Wheat Bread": { category: "grains and breads", price: 2.99 }
-};
-
-// since "grocery_list" is an object (not an array) we have do Object.keys()
-let generatedHtml = Object.keys(grocery_list).reduce((accum, currKey) => accum +
-  `<div class="grocery_item">
-    <div class="item">${currKey}</div>
-    <div class="category">${grocery_list[currKey].category}</div>
-    <div class="price">${grocery_list[currKey].price}</div>
-  </div>`, '');
-
-document.getElementById('container').innerHTML = generatedHtml;
-
-*/
-
 
 
