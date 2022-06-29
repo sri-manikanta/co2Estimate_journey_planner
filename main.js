@@ -287,6 +287,7 @@ function g_query_car(from, to, query) {
       let generatedHtml = ``;
       for(i=0; i<co2cal.length; i++){
         generatedHtml = generatedHtml +`<div class="grocery_item">
+                                          <div class="item">Travel by Car</div>
                                           <div class="item">duration: ${co2cal[i][0]}</div><br>
                                           <div class="item">Start time: ${co2cal[i][1]}</div><br>
                                           <div class="item">co2: ${co2cal[i][2]} kg</div><br>
