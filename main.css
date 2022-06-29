@@ -6,6 +6,7 @@ body {
   .class1,
   .class2,
   .class3 {
+    width: 33.33333%;
     float: left;
   }
   
