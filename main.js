@@ -280,7 +280,7 @@ function g_query_car(from, to, query) {
         
         //console.log(data1.data.plan.itineraries[i].startTime);
         
-        co2cal[i]['2'] = (co2i).toFixed(2);
+        co2cal[i]['2'] = co2i;
         console.log(co2cal);
 
       }
