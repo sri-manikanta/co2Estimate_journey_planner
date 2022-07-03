@@ -314,5 +314,15 @@ function timeConverter(UNIX_timestamp){
   return time;
 }
 
+function emissiondata(){
+  fetch()
+  .then(response => response.text())
+  .then(data => {
+  	// Do something with your data
+  	console.log(data);
+  });
+}
+
+
 
 
