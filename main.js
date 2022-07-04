@@ -322,7 +322,7 @@ function emissiondata(){
   .then(data => {
   	em = data.split(/\r\n|\n/);
   	console.log(em);
-    console.log(em[0][1]);
+    console.log(em[0]);
   });
 }
 
