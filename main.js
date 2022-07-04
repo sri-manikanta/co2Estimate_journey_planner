@@ -1,4 +1,4 @@
-let co2values = [{agency:"HSL",mode:"",avg:"",pavg:""},{agency:"VR",mode:"",avg:"",pavg:""}]
+let em, emf = [];
 let co2caldata ;
 let fplace = document.getElementById("fplace");
 let tplace = document.getElementById("tplace");
@@ -110,19 +110,32 @@ function g_query(from, to, query) {
         co2cal[i]['3'] = [];
         for (let l=0; l<legsl; l++){
           let leg_i = data1.data.plan.itineraries[i].legs[l];
-          console.log(leg_i.mode);
+          let co2em = 0;
+          console.log(leg_i.distance);
           co2cal[i]['3'][l] = [leg_i.mode];
           co2cal[i]['3'][l]['1'] = leg_i.duration;
           co2cal[i]['3'][l]['2'] = leg_i.from.name;
           co2cal[i]['3'][l]['3'] = leg_i.to.name;
           if(leg_i.agency){
             co2cal[i]['3'][l]['4'] = leg_i.agency.name;
+            for (a=0; a<emf.length; a++){
+              if(leg_i.agency.name == emf[a][2]){
+                if(leg_i.mode == emf[a][3]){
+                  co2em = emf[a][4]/emf[a][5];
+                  console.log("co2em found:",co2em);
+                }
+              }
+            }
+
           } else {
             co2cal[i]['3'][l]['4'] = 'None';
           }
           co2cal[i]['3'][l]['5'] = leg_i.distance;
           let co2l = 0;
-          if(leg_i.mode == 'WALK'){
+          if(co2em){
+            co2l = leg_i.distance * 0.001 * co2em;
+          }
+          else if(leg_i.mode == 'WALK'){
               co2l = leg_i.distance * 0;
               console.log("i am in walk");
           }else if(leg_i.mode == 'RAIL'){
@@ -238,6 +251,7 @@ function g_query_car(from, to, query) {
         co2cal[i].push(timeConverter(data1.data.plan.itineraries[i].startTime));
         for (let l=0; l<legsl; l++){
           let leg_i = data1.data.plan.itineraries[i].legs[l];
+          let co2em = 0;
           console.log(leg_i.mode);
           co2cal[i]['3'] = [leg_i.mode];
           co2cal[i]['3']['1'] = leg_i.duration;
@@ -245,12 +259,23 @@ function g_query_car(from, to, query) {
           co2cal[i]['3']['3'] = leg_i.to.name;
           if(leg_i.agency){
             co2cal[i]['3']['4'] = leg_i.agency.name;
+            for (a=0; a<emf.length; a++){
+              if(leg_i.agency.name == emf[a][2]){
+                if(leg_i.mode == emf[a][3]){
+                  co2em = emf[a][4]/emf[a][5];
+                  console.log("co2em found:",co2em);
+                }
+              }
+            }
           } else {
             co2cal[i]['3']['4'] = 'None';
           }
           co2cal[i]['3']['5'] = leg_i.distance;
           let co2l = 0;
-          if(leg_i.mode == 'WALK'){
+          if(co2em){
+            co2l = leg_i.distance * 0.001 * co2em;
+          }
+          else if(leg_i.mode == 'WALK'){
               co2l = leg_i.distance * 0;
               console.log("i am in walk");
           }else if(leg_i.mode == 'RAIL'){
@@ -316,13 +341,15 @@ function timeConverter(UNIX_timestamp){
 }
 
 function emissiondata(){
-  let em=[];
   fetch("https://raw.githubusercontent.com/sri-manikanta/co2Estimate_journey_planner/main/finland_co2.csv")
   .then(response => response.text())
   .then(data => {
   	em = data.split(/\r\n|\n/);
-  	console.log(em);
-    console.log(em[0]);
+    for (i=1; i<em.length; i++){
+      emf[i-1] = em[i].split(',');
+    }
+  	console.log(emf);
+    console.log(emf[0]);
   });
 }
 
