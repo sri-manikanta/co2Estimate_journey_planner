@@ -317,7 +317,7 @@ function timeConverter(UNIX_timestamp){
 
 function emissiondata(){
   let em=[];
-  fetch("https://raw.githubusercontent.com/sri-manikanta/co2Estimate_journey_planner/main/finland_co2.txt")
+  fetch("https://raw.githubusercontent.com/sri-manikanta/co2Estimate_journey_planner/main/finland_co2.csv")
   .then(response => response.text())
   .then(data => {
   	em = data.split(/\r\n|\n/);
