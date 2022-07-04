@@ -3,6 +3,30 @@ let co2caldata ;
 let fplace = document.getElementById("fplace");
 let tplace = document.getElementById("tplace");
 let btn = document.getElementById("btn");
+let stops =[];
+fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
+    method: 'POST',
+    body: JSON.stringify({
+      query: `{
+        stops {
+          name
+          lat
+          lon
+        }
+      }`
+    }),
+    headers: {
+        'content-type': 'application/json'
+    }
+  }).then(async (data) => {
+    data1 = ((await data.json()));
+    //console.log(data1); 
+    for (i=0; i<data1.data.stops.length; i++){
+      stops[i]=[data1.data.stops[i].name, data1.data.stops[i].lat, data1.data.stops[i].lon]
+    }
+    console.log(stops);
+  })
+
 btn.addEventListener('click', event => {
   let from_value = fplace.options[fplace.selectedIndex].value;
   let to_value = tplace.options[tplace.selectedIndex].value;
