@@ -8,6 +8,7 @@ btn.addEventListener('click', event => {
   let to_value = tplace.options[tplace.selectedIndex].value;
   console.log(from_value);
   console.log(to_value);
+  emissiondata();
   g_query(from_value,to_value, query1);
   g_query_car(from_value,to_value, query2);
 });
@@ -315,11 +316,13 @@ function timeConverter(UNIX_timestamp){
 }
 
 function emissiondata(){
-  fetch(`https://github.com/sri-manikanta/co2Estimate_journey_planner/blob/main/finland_co2.txt`)
+  let em=[];
+  fetch("https://raw.githubusercontent.com/sri-manikanta/co2Estimate_journey_planner/main/finland_co2.txt")
   .then(response => response.text())
   .then(data => {
-  	// Do something with your data
-  	console.log(data);
+  	em = data.split(/\r\n|\n/);
+  	console.log(em);
+    console.log(em[0][1]);
   });
 }
 
