@@ -159,7 +159,7 @@ function g_query(from, to, query) {
                                           <input type="radio" id=itinary${i} name="legs" value="ind_leg"><br>
                                           <div class="item">duration: ${co2cal[i][0]}</div><br>
                                           <div class="item">Start time: ${co2cal[i][1]}</div><br>
-                                          <div class="item">co2: ${co2cal[i][2]} kg</div><br>
+                                          <div class="item">co2: ${co2cal[i][2]} kg equivalent for the production of ${(co2cal[i][2]*66.67).toFixed(2)} g of Beef</div><br>
                                         </div>`;
       }
 
@@ -291,7 +291,7 @@ function g_query_car(from, to, query) {
                                           <div class="item">Travel by Car</div>
                                           <div class="item">duration: ${co2cal[i][0]}</div><br>
                                           <div class="item">Start time: ${co2cal[i][1]}</div><br>
-                                          <div class="item">co2: ${co2cal[i][2]} kg</div><br>
+                                          <div class="item">co2: ${co2cal[i][2]} kg equivalent for the production of ${(co2cal[i][2]*66.67).toFixed(2)} g of Beef</div><br>
                                         </div>`;
       }
 
