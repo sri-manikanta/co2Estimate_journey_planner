@@ -315,7 +315,7 @@ function timeConverter(UNIX_timestamp){
 }
 
 function emissiondata(){
-  fetch()
+  fetch(`./finland_co2.txt`)
   .then(response => response.text())
   .then(data => {
   	// Do something with your data
