@@ -259,10 +259,10 @@ function g_query_car(from, to, query) {
           co2cal[i]['3']['3'] = leg_i.to.name;
           if(leg_i.agency){
             co2cal[i]['3']['4'] = leg_i.agency.name;
-            for (i=0; i<emf.length; i++){
-              if(leg_i.agency.name == emf[i][2]){
-                if(leg_i.mode == emf[i][3]){
-                  co2em = emf[i][4]/emf[i][5];
+            for (a=0; a<emf.length; a++){
+              if(leg_i.agency.name == emf[a][2]){
+                if(leg_i.mode == emf[a][3]){
+                  co2em = emf[a][4]/emf[a][5];
                   console.log("co2em found:",co2em);
                 }
               }
