@@ -3,6 +3,30 @@ let co2caldata ;
 let fplace = document.getElementById("fplace");
 let tplace = document.getElementById("tplace");
 let btn = document.getElementById("btn");
+let stops =[];
+fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
+    method: 'POST',
+    body: JSON.stringify({
+      query: `{
+        stops {
+          name
+          lat
+          lon
+        }
+      }`
+    }),
+    headers: {
+        'content-type': 'application/json'
+    }
+  }).then(async (data) => {
+    data1 = ((await data.json()));
+    //console.log(data1); 
+    for (i=0; i<data1.data.stops.length; i++){
+      stops[i]=[data1.data.stops[i].name, data1.data.stops[i].lat, data1.data.stops[i].lon]
+    }
+    console.log(stops);
+  })
+
 btn.addEventListener('click', event => {
   let from_value = fplace.options[fplace.selectedIndex].value;
   let to_value = tplace.options[tplace.selectedIndex].value;
@@ -167,13 +191,14 @@ function g_query(from, to, query) {
       }
       let generatedHtml = ``;
       for(i=0; i<co2cal.length; i++){
-        generatedHtml = generatedHtml +`<div class="grocery_item">
-                                          <div class="item">Itinerary num: ${i+1}</div>
-                                          <input type="radio" id=itinary${i} name="legs" value="ind_leg"><br>
-                                          <div class="item">duration: ${co2cal[i][0]}</div><br>
-                                          <div class="item">Start time: ${co2cal[i][1]}</div><br>
-                                          <div class="item">co2: ${co2cal[i][2]} kg equivalent for the production of ${(co2cal[i][2]*66.67).toFixed(2)} g of Beef</div><br>
-                                        </div>`;
+        generatedHtml = generatedHtml +`<tr class="itinerary">
+                                          <td class="iti_head">${i+1}</td>
+                                          <td class="iti_head">${co2cal[i][0]}</td>
+                                          <td class="iti_head">${co2cal[i][1]}</td>
+                                          <td class="iti_head">${co2cal[i][2]} kg</td>
+                                          <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
+                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg"></td>
+                                        </tr>`;
       }
 
       document.getElementById('container').innerHTML = generatedHtml;
@@ -205,15 +230,16 @@ function indi(iti){
   let generatedHtml2 = ``;
       console.log(co2caldata[iti]["3"]);
       for(i=0; i<co2caldata[iti]["3"].length; i++){
-        generatedHtml2 = generatedHtml2 +`<div class="grocery_item">
-                                          <div class="item">mode: ${co2caldata[iti]["3"][i]["0"]}</div>
-                                          <div class="item">duration: ${co2caldata[iti]["3"][i]["1"]} </div>
-                                          <div class="item">from: ${co2caldata[iti]["3"][i]["2"]}</div>
-                                          <div class="item">to: ${co2caldata[iti]["3"][i]["3"]}</div>
-                                          <div class="item">agency: ${co2caldata[iti]["3"][i]["4"]}</div>
-                                          <div class="item">distance: ${co2caldata[iti]["3"][i]["5"]}</div>
-                                          <div class="item">co2: ${co2caldata[iti]["3"][i]["6"]}</div>
-                                        </div>`;  
+        generatedHtml2 = generatedHtml2 +`<tr class="itinerary">
+                                          <td class="iti_head">${co2caldata[iti]["3"][i]["0"]}</td>
+                                          <td class="iti_head">${co2caldata[iti]["3"][i]["1"]} </td>
+                                          <td class="iti_head">${co2caldata[iti]["3"][i]["2"]}</td>
+                                          <td class="iti_head">${co2caldata[iti]["3"][i]["3"]}</td>
+                                          <td class="iti_head">${co2caldata[iti]["3"][i]["4"]}</td>
+                                          <td class="iti_head">${(co2caldata[iti]["3"][i]["5"]).toFixed(2)}</td>
+                                          <td class="iti_head">${co2caldata[iti]["3"][i]["6"]} kg</td>
+                                          <td class="iti_head">${((co2caldata[iti]["3"][i]["6"])*66.67).toFixed(2)} g</td>
+                                        </tr>`;  
               
       }
       document.getElementById('container2').innerHTML = generatedHtml2;
@@ -312,12 +338,13 @@ function g_query_car(from, to, query) {
       }
       let generatedHtml = ``;
       for(i=0; i<co2cal.length; i++){
-        generatedHtml = generatedHtml +`<div class="grocery_item">
-                                          <div class="item">Travel by Car</div>
-                                          <div class="item">duration: ${co2cal[i][0]}</div><br>
-                                          <div class="item">Start time: ${co2cal[i][1]}</div><br>
-                                          <div class="item">co2: ${co2cal[i][2]} kg equivalent for the production of ${(co2cal[i][2]*66.67).toFixed(2)} g of Beef</div><br>
-                                        </div>`;
+        generatedHtml = generatedHtml +`<tr class="itinerary">
+                                          <td class="iti_head">CAR</td>
+                                          <td class="iti_head">${co2cal[i][0]}</td>
+                                          <td class="iti_head">${co2cal[i][1]}</td>
+                                          <td class="iti_head">${co2cal[i][2]} kg</td>
+                                          <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
+                                        </tr>`;
       }
 
       
