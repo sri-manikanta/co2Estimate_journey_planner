@@ -3,19 +3,33 @@ body {
     float: left;
   }
   
-  .class1,
-  .class2,
-  .class3 {
-    width: 33.33333%;
+  .class1{
+    width: 15%;
     float: left;
+  }
+
+  .class2{
+    width: 35%;
+    float:left;
+  }
+
+  .class3{
+    width: 50%;
+    float:left;
   }
   
   p {
     padding-top: 25px;
     text-align: center;
   }
-  .grocery_item{
+  .itinerary{
     padding: 5px;
+    display: flex;
+    border: black;
+    border-radius: 10px;
+  }
+  .iti_head{
+    padding: 1.0rem;
   }
   .grocery_item:not(:last-child){
     border-bottom: 1px solid #ccc;
