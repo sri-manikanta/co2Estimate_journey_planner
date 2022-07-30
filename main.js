@@ -27,9 +27,7 @@ fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
     console.log(stops);
   });
 
-emissiondata();
-g_query(fplace.options[fplace.selectedIndex].value,tplace.options[tplace.selectedIndex].value, query1);
-g_query_car(fplace.options[fplace.selectedIndex].value,tplace.options[tplace.selectedIndex].value, query2);
+
 
 btn.addEventListener('click', event => {
   let from_value = fplace.options[fplace.selectedIndex].value;
@@ -383,6 +381,10 @@ function emissiondata(){
     console.log(emf[0]);
   });
 }
+
+emissiondata();
+g_query(fplace.options[fplace.selectedIndex].value,tplace.options[tplace.selectedIndex].value, query1);
+g_query_car(fplace.options[fplace.selectedIndex].value,tplace.options[tplace.selectedIndex].value, query2);
 
 
 
