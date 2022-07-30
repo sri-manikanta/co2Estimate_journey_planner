@@ -199,12 +199,13 @@ function g_query(from, to, query) {
                                           <td class="iti_head">${co2cal[i][1]}</td>
                                           <td class="iti_head">${co2cal[i][2]} kg</td>
                                           <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
-                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg" checked="checked"></td>
+                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg"></td>
                                         </tr>`;
       }
 
       document.getElementById('container').innerHTML = generatedHtml;
       co2caldata = co2cal;
+      indi(0);
       let indi_leg_0 = document.getElementById("itinary0");
       indi_leg_0.addEventListener('click', event => {
         indi(0);
