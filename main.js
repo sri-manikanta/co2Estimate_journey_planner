@@ -25,14 +25,18 @@ fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
       stops[i]=[data1.data.stops[i].name, data1.data.stops[i].lat, data1.data.stops[i].lon]
     }
     console.log(stops);
-  })
+  });
+
+emissiondata();
+g_query(fplace.options[fplace.selectedIndex].value,tplace.options[tplace.selectedIndex].value, query1);
+g_query_car(fplace.options[fplace.selectedIndex].value,tplace.options[tplace.selectedIndex].value, query2);
 
 btn.addEventListener('click', event => {
   let from_value = fplace.options[fplace.selectedIndex].value;
   let to_value = tplace.options[tplace.selectedIndex].value;
   console.log(from_value);
   console.log(to_value);
-  emissiondata();
+  //emissiondata();
   g_query(from_value,to_value, query1);
   g_query_car(from_value,to_value, query2);
 });
@@ -197,7 +201,7 @@ function g_query(from, to, query) {
                                           <td class="iti_head">${co2cal[i][1]}</td>
                                           <td class="iti_head">${co2cal[i][2]} kg</td>
                                           <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
-                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg"></td>
+                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg" checked="checked"></td>
                                         </tr>`;
       }
 
