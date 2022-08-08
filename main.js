@@ -4,30 +4,6 @@ let fplace = document.getElementById("fplace");
 let tplace = document.getElementById("tplace");
 let btn = document.getElementById("btn");
 let stops =[];
-fetch('https://api.digitransit.fi/routing/v1/routers/finland/index/graphql', {
-    method: 'POST',
-    body: JSON.stringify({
-      query: `{
-        stops {
-          name
-          lat
-          lon
-        }
-      }`
-    }),
-    headers: {
-        'content-type': 'application/json'
-    }
-  }).then(async (data) => {
-    data1 = ((await data.json()));
-    //console.log(data1); 
-    for (i=0; i<data1.data.stops.length; i++){
-      stops[i]=[data1.data.stops[i].name, data1.data.stops[i].lat, data1.data.stops[i].lon]
-    }
-    console.log(stops);
-  });
-
-
 
 btn.addEventListener('click', event => {
   let from_value = fplace.options[fplace.selectedIndex].value;
@@ -191,15 +167,21 @@ function g_query(from, to, query) {
         console.log(co2cal);
 
       }
-      let generatedHtml = ``;
+      let generatedHtml = `<tr>
+      <th class="iti_head">num</th>
+      <th class="iti_head">Duration</th>
+      <th class="iti_head">Start Time</th>
+      <th class="iti_head">CO2 Eq</th>
+      <th class="iti_head">Beef Eq</th>
+    </tr>`;
       for(i=0; i<co2cal.length; i++){
-        generatedHtml = generatedHtml +`<tr class="itinerary">
+        generatedHtml = generatedHtml +`<tr>
                                           <td class="iti_head">${i+1}</td>
                                           <td class="iti_head">${co2cal[i][0]}</td>
                                           <td class="iti_head">${co2cal[i][1]}</td>
                                           <td class="iti_head">${co2cal[i][2]} kg</td>
                                           <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
-                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg"></td>
+                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg" class="iti_head"></td>
                                         </tr>`;
       }
 
@@ -230,7 +212,16 @@ function g_query(from, to, query) {
   });
 }
 function indi(iti){
-  let generatedHtml2 = ``;
+  let generatedHtml2 = `<tr class="itinerary">
+  <th class="iti_head">Mode</th>
+  <th class="iti_head">Duration</th>
+  <th class="iti_head">From</th>
+  <th class="iti_head">To</th>
+  <th class="iti_head">Agency</th>
+  <th class="iti_head">Diatance</th>
+  <th class="iti_head">CO2 Eq</th>
+  <th class="iti_head">Beef Eq</th>
+</tr>`;
       console.log(co2caldata[iti]["3"]);
       for(i=0; i<co2caldata[iti]["3"].length; i++){
         generatedHtml2 = generatedHtml2 +`<tr class="itinerary">
@@ -339,9 +330,15 @@ function g_query_car(from, to, query) {
         console.log(co2cal);
 
       }
-      let generatedHtml = ``;
+      let generatedHtml = `<tr>
+      <th class="iti_head"> By </th>
+      <th class="iti_head"> Duration</th>
+      <th class="iti_head">Start Time</th>
+      <th class="iti_head">CO2 Eq</th>
+      <th class="iti_head" >Beef Eq</th>
+    </tr>`;
       for(i=0; i<co2cal.length; i++){
-        generatedHtml = generatedHtml +`<tr class="itinerary">
+        generatedHtml = generatedHtml +`<tr>
                                           <td class="iti_head">CAR</td>
                                           <td class="iti_head">${co2cal[i][0]}</td>
                                           <td class="iti_head">${co2cal[i][1]}</td>
