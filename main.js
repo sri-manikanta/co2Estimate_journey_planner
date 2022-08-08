@@ -212,7 +212,7 @@ function g_query(from, to, query) {
   });
 }
 function indi(iti){
-  let generatedHtml2 = `<tr class="itinerary">
+  let generatedHtml2 = `<tr>
   <th class="iti_head">Mode</th>
   <th class="iti_head">Duration</th>
   <th class="iti_head">From</th>
@@ -224,7 +224,7 @@ function indi(iti){
 </tr>`;
       console.log(co2caldata[iti]["3"]);
       for(i=0; i<co2caldata[iti]["3"].length; i++){
-        generatedHtml2 = generatedHtml2 +`<tr class="itinerary">
+        generatedHtml2 = generatedHtml2 +`<tr>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["0"]}</td>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["1"]} </td>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["2"]}</td>
