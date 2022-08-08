@@ -173,9 +173,10 @@ function g_query(from, to, query) {
                                           <td class="iti_head">${i+1}</td>
                                           <td class="iti_head">${co2cal[i][0]}</td>
                                           <td class="iti_head">${co2cal[i][1]}</td>
-                                          <td class="iti_head">${co2cal[i][2]} kg</td>
-                                          <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
-                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg" class="iti_head"></td>
+                                          <td class="iti_head2">${co2cal[i][2]} kg</td>
+                                          <td class="iti_head1">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
+                                          <td><input type="radio" id=itinary${i} name="legs" value="ind_leg" class="iti_head" style="width: 2rem;
+                                          height: 2rem;"></td>
                                         </tr>`;
       }
 
@@ -225,8 +226,8 @@ function indi(iti){
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["3"]}</td>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["4"]}</td>
                                           <td class="iti_head">${((co2caldata[iti]["3"][i]["5"])/1000).toFixed(2)} km</td>
-                                          <td class="iti_head">${co2caldata[iti]["3"][i]["6"]} kg</td>
-                                          <td class="iti_head">${((co2caldata[iti]["3"][i]["6"])*66.67).toFixed(2)} g</td>
+                                          <td class="iti_head2">${co2caldata[iti]["3"][i]["6"]} kg</td>
+                                          <td class="iti_head1">${((co2caldata[iti]["3"][i]["6"])*66.67).toFixed(2)} g</td>
                                         </tr>`;  
               
       }
@@ -336,8 +337,8 @@ function g_query_car(from, to, query) {
                                           <td class="iti_head">CAR</td>
                                           <td class="iti_head">${co2cal[i][0]}</td>
                                           <td class="iti_head">${co2cal[i][1]}</td>
-                                          <td class="iti_head">${co2cal[i][2]} kg</td>
-                                          <td class="iti_head">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
+                                          <td class="iti_head2">${co2cal[i][2]} kg</td>
+                                          <td class="iti_head1">${(co2cal[i][2]*66.67).toFixed(2)} g </td>
                                         </tr>`;
       }
 
