@@ -9,9 +9,21 @@
 </head>
 
 <body>
-    
-    <div class="class1" style="background-color:#c4d6e2;">
-      <label for="fname">From:</label><br>
+  <div class="center" style="background-color:#4aaef0;">
+    <h2>CO2 Estimator</h2>
+    <div>
+      <h4>
+        participate in 
+      
+      <form action="https://forms.gle/TwYZxiPLrv9CYYpF9">
+      <input type="submit" name="survey" value="survey" style="display:inline;">
+      </form>
+      
+       and get Gifts from FinTraffic</h4> 
+    </div>
+  </div>
+    <div class="center" style="background-color:#4aaef0;">
+      <label for="fname">From:</label>
       <!--
       <input type="text" id="fplace" name="from_place" value="Helsinki"><br>
       -->
@@ -23,7 +35,7 @@
         <option value="Jyväskylä, MATKA::62.403396,25.681036">Jyväskylä</option>
         <option value="Oulu, MATKA::64.928856,25.372801">Oulu</option>
       </select><br><br>
-      <label for="lname">To:</label><br>
+      <label for="lname">To:</label>
       <!--
       <input type="text" id="tplace" name="to_place" value="Tampere"><br><br>
       -->
@@ -35,51 +47,19 @@
         <option value="Oulu, MATKA::64.928856,25.372801">Oulu</option>
         <option value="Helsinki, MATKA::60.171294,24.94165">Helsinki</option>
       </select><br><br>
-      <button id="btn">Plan</button><br><br>
-      <form action="https://forms.gle/TwYZxiPLrv9CYYpF9">
-      <br><input type="submit" name="survey" value="survey">
-      </form>
+      <button id="btn">Plan</button><br>
     </div>
-    <div class="class2" style="background-color:#d2e1f4;">
-      <table class="itinerary">
-        <tr>
-          <th class="iti_head"> By </th>
-          <th class="iti_head"> Duration</th>
-          <th class="iti_head">Start Time</th>
-          <th class="iti_head">CO2 Eq</th>
-          <th class="iti_head" >Beef Eq</th>
-        </tr>
-        <tr id="container1"></tr>
-        
-      </table>
+    <div class="center" style="background-color:#4aaef0;">
+      <table class="center" id="container1" style="display:flex; text-align: center;"></table>
       <div>Itineraries</div>
-      <table class="itinerary">
-        <tr>
-          <th class="iti_head">num</th>
-          <th class="iti_head">Duration</th>
-          <th class="iti_head">Start Time</th>
-          <th class="iti_head">CO2 Eq</th>
-          <th class="iti_head">Beef Eq</th>
-        </tr>
-        <table id="container"></table>
-      </table>
+      <table class="center" id="container" style="display:flex; text-align: center;"></table>
       
     </div>
-    <div class="class3" style="background-color:#d7ebf4;">
-      <table>
-      <tr class="itinerary">
-        <th class="iti_head">Mode</th>
-        <th class="iti_head">Duration</th>
-        <th class="iti_head">From</th>
-        <th class="iti_head">To</th>
-        <th class="iti_head">Agency</th>
-        <th class="iti_head">Diatance</th>
-        <th class="iti_head">CO2 Eq</th>
-        <th class="iti_head">Beef Eq</th>
-      </tr>
-      </table>
-      <table id="container2"></table>
+    <!--
+    <div class="center" style="background-color:#d7ebf4;">
+      <table class="center" id="container2"></table>
     </div>
+    -->
   <script src="./main.js"></script>
 
 </body>
