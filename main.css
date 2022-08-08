@@ -34,9 +34,8 @@ body {
   }
   .iti_head{
     padding: 1.0rem;
+    width: auto;
     text-align: center;
   }
-  .grocery_item:not(:last-child){
-    border-bottom: 1px solid #ccc;
-  }
+  
   
