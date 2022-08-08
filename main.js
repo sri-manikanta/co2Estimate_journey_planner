@@ -101,13 +101,7 @@ function g_query(from, to, query) {
         //console.log(data1.data.plan.itineraries[i].legs['0']);
         let legsl =  data1.data.plan.itineraries[i].legs.length;
         let co2i = 0;
-        let duration = data1.data.plan.itineraries[i].duration;
-        let durs = duration%60;
-        let durationm = duration/60;
-        let durm = durationm%60;
-        let durh = durationm/60;
-        let dur = durh.toFixed(0) + ':' + durm.toFixed(0) + ':' + durs.toFixed(0);
-        co2cal[i] = [dur];
+        co2cal[i] = [s_to_hms(data1.data.plan.itineraries[i].duration)];
         co2cal[i].push(timeConverter(data1.data.plan.itineraries[i].startTime));
         co2cal[i]['3'] = [];
         for (let l=0; l<legsl; l++){
@@ -115,7 +109,7 @@ function g_query(from, to, query) {
           let co2em = 0;
           console.log(leg_i.distance);
           co2cal[i]['3'][l] = [leg_i.mode];
-          co2cal[i]['3'][l]['1'] = leg_i.duration;
+          co2cal[i]['3'][l]['1'] = s_to_hms(leg_i.duration);
           co2cal[i]['3'][l]['2'] = leg_i.from.name;
           co2cal[i]['3'][l]['3'] = leg_i.to.name;
           if(leg_i.agency){
@@ -230,7 +224,7 @@ function indi(iti){
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["2"]}</td>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["3"]}</td>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["4"]}</td>
-                                          <td class="iti_head">${(co2caldata[iti]["3"][i]["5"]).toFixed(2)}</td>
+                                          <td class="iti_head">${((co2caldata[iti]["3"][i]["5"])/1000).toFixed(2)} km</td>
                                           <td class="iti_head">${co2caldata[iti]["3"][i]["6"]} kg</td>
                                           <td class="iti_head">${((co2caldata[iti]["3"][i]["6"])*66.67).toFixed(2)} g</td>
                                         </tr>`;  
@@ -365,6 +359,17 @@ function timeConverter(UNIX_timestamp){
   var sec = a.getSeconds();
   var time = date + ' ' + month + ' ' + hour + ':' + min + ':' + sec ;
   return time;
+}
+
+function s_to_hms(duration){
+
+  let durs = duration%60;
+  let durationm = duration/60;
+  let durm = durationm%60;
+  let durh = durationm/60;
+  let dur = durh.toFixed(0) + ':' + durm.toFixed(0) + ':' + durs.toFixed(0);
+
+  return dur;
 }
 
 function emissiondata(){
