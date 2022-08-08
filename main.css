@@ -38,5 +38,21 @@ body {
     font-size: medium;
     text-align: center;
   }
+  .iti_head1{
+    padding: 1.0rem;
+    width: auto;
+    font-size: medium;
+    text-align: center;
+    background: #f6f604;
+    border-radius: 10rem;
+  }
+  .iti_head2{
+    padding: 1.0rem;
+    width: auto;
+    font-size: medium;
+    text-align: center;
+    background: #f67904;
+    border-radius: 10rem;
+  }
   
   
